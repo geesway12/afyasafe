@@ -3,9 +3,6 @@ admin.html
 admin-scripts/
 market-builder/
 
-# Data files (if you want to keep them private)
-ads-data.json
-market.json
 
 # System + environment files
 .DS_Store
