@@ -1,23 +1,37 @@
 html, body {
   height: 100%;
 }
+
 body {
   padding: env(safe-area-inset-top, 0.75rem) 1rem env(safe-area-inset-bottom, 5rem);
   background: #f8f9fa;
+  transition: background 0.3s, color 0.3s;
+  color: #000;
+}
+
+footer {
+  margin-top: 2rem;
+}
+
+.navbar {
   transition: background 0.3s;
 }
+
 .dark-mode {
   background: #121212 !important;
   color: #e0e0e0;
 }
+
 .dark-mode .card,
 .dark-mode .modal-content {
   background: #232323;
   color: #fff;
 }
+
 .dark-mode .navbar {
   background: #1e1e1e !important;
 }
+
 .calcell,
 .calcell-head {
   width: 42px;
@@ -31,33 +45,38 @@ body {
   font-size: 1rem;
   color: #000;
 }
-.calcell[style*='#c62828'],
-.calcell[style*='#4b2e2b'] {
+
+.calcell[style*='#c62828'],  /* red */
+.calcell[style*='#4b2e2b'] { /* dark brown */
   color: #fff !important;
 }
+
 .calcell {
   cursor: pointer;
   border: 1px solid #fff;
   transition: box-shadow 0.2s;
 }
+
 .calcell.logged {
   border: 2px solid #4caf50;
 }
+
 .calcell.periodstart {
   border: 2px solid #c62828;
 }
+
 .calcell-empty {
   visibility: hidden;
 }
+
 .calcell-head {
   background: none;
   border: none;
   font-weight: 700;
   color: #b87333;
 }
-footer {
-  margin-top: 2rem;
-}
+
+/* Floating action button (if used) */
 .fab {
   position: fixed;
   bottom: 85px;
@@ -70,6 +89,7 @@ footer {
   justify-content: center;
   box-shadow: 0 4px 12px #0002;
 }
+
 @media (max-width: 400px) {
   .fab {
     width: 46px;
@@ -77,10 +97,57 @@ footer {
     bottom: 70px;
   }
 }
+
 @media (max-width: 330px) {
   .btn,
   .form-control {
     width: 100% !important;
     min-width: 0 !important;
   }
+}
+
+/* Theme-ready classes (future color schemes) */
+.theme-light {
+  background: #f8f9fa;
+  color: #000;
+}
+
+.theme-dark {
+  background: #121212;
+  color: #fff;
+}
+
+.theme-blue {
+  background: #e3f2fd;
+  color: #0d47a1;
+}
+
+.theme-pink {
+  background: #fce4ec;
+  color: #880e4f;
+}
+
+.theme-red {
+  background: #ffebee;
+  color: #b71c1c;
+}
+
+.theme-orange {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.theme-purple {
+  background: #f3e5f5;
+  color: #4a148c;
+}
+
+.theme-green {
+  background: #e8f5e9;
+  color: #1b5e20;
+}
+
+.theme-yellow {
+  background: #fffde7;
+  color: #f57f17;
 }
