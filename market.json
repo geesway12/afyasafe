@@ -7,5 +7,14 @@
     "image": "market/akualogistics.jpeg",
     "start": "2025-06-03",
     "duration": 10
+  },
+  {
+    "title": "💡 ThynkTech – Digital Solutions with Purpose",
+    "description": "Empowering small health enterprises, NGOs, SMEs and communities with powerful mobile apps, data platforms, and digital tools.\n✅ Tailored digital solutions\n✅ Offline-ready apps\n✅ Visual dashboards & insights",
+    "cta": "🌐 Explore our work and build with purpose → Click to visit our website.",
+    "link": "https://geesway12.github.io/thynktech-site/",
+    "image": "market/thynktech_dark.png",
+    "start": "2025-06-07",
+    "duration": 1000
   }
 ]
