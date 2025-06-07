@@ -506,13 +506,15 @@ const wrap = document.getElementById('learnContainer');
 blocks[blockKey].forEach(({ img, title, text }) => {
   const fig = document.createElement('figure');
   fig.className = 'mb-4';
+  // Remove all leading bullet points (\t•\t, *, -) before icons in text
+  const cleanText = text.replace(/(^|\n)[\t ]*[\u2022*-][\t ]*/g, '$1');
   fig.innerHTML = `
     <figcaption>
       <h6 class="fw-semibold">${title}</h6>
     </figcaption>
     <img src="${base}${img}" class="img-fluid rounded mb-2 d-block mx-auto" alt="${title}">
     <figcaption>
-      <p class="small white-space-pre">${text.replace(/\n/g,'<br>')}</p>
+      <p class="small white-space-pre">${cleanText.replace(/\n/g,'<br>')}</p>
     </figcaption>
   `;
   wrap.appendChild(fig);

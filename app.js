@@ -122,6 +122,10 @@ if ($calendarGrid) {
       if (!calPeriodStart) {
         calPeriodStart = iso;
         localStorage.setItem(CAL_LS_KEY.START, calPeriodStart);
+        // Save first log timestamp
+        if (!localStorage.getItem('firstLogTime')) {
+          localStorage.setItem('firstLogTime', Date.now().toString());
+        }
         const pickedDate = new Date(iso);
         calViewYear = pickedDate.getFullYear();
         calViewMonth = pickedDate.getMonth();
@@ -131,6 +135,10 @@ if ($calendarGrid) {
         if (!calLogs.includes(iso) && iso <= todayStr) {
           calLogs.push(iso);
           localStorage.setItem(CAL_LS_KEY.LOGS, JSON.stringify(calLogs));
+          // Save first log timestamp if not already set
+          if (!localStorage.getItem('firstLogTime')) {
+            localStorage.setItem('firstLogTime', Date.now().toString());
+          }
           renderCalendarGrid();
         }
       }
@@ -146,6 +154,10 @@ if ($logTodayBtn) {
     if (!calLogs.includes(todayStr)) {
       calLogs.push(todayStr);
       localStorage.setItem(CAL_LS_KEY.LOGS, JSON.stringify(calLogs));
+      // Save first log timestamp if not already set
+      if (!localStorage.getItem('firstLogTime')) {
+        localStorage.setItem('firstLogTime', Date.now().toString());
+      }
       renderCalendarGrid();
     }
   });
@@ -190,11 +202,17 @@ window.addEventListener('load', () => {
     calViewMonth = calNow.getMonth();
     renderCalendarGrid();
   }
-  if (!localStorage.getItem('cycleLogPrompted')) {
-    setTimeout(() => {
-      alert('Don’t forget to log your cycle today!');
-      localStorage.setItem('cycleLogPrompted', 'yes');
-    }, 3000); // Show after 3 seconds
+  // Only show prompt 24 hours after first log
+  const firstLogTime = parseInt(localStorage.getItem('firstLogTime') || "0", 10);
+  const prompted = localStorage.getItem('cycleLogPrompted');
+  if (firstLogTime && !prompted) {
+    const now = Date.now();
+    if (now - firstLogTime >= 24 * 60 * 60 * 1000) {
+      setTimeout(() => {
+        alert('Don’t forget to log your cycle today!');
+        localStorage.setItem('cycleLogPrompted', 'yes');
+      }, 1000); // Show after 1 second
+    }
   }
 });
 
@@ -262,10 +280,11 @@ window.addEventListener('beforeinstallprompt', (e) => {
   if (installBtn) installBtn.style.display = 'block';
 });
 
+// Handle install button click
 document.getElementById('installAppBtn')?.addEventListener('click', async () => {
   if (deferredPrompt) {
     deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
+    await deferredPrompt.userChoice;
     deferredPrompt = null;
     document.getElementById('installAppBtn').style.display = 'none';
   }
@@ -273,12 +292,13 @@ document.getElementById('installAppBtn')?.addEventListener('click', async () => 
 
 // Service Worker registration for PWA
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js').then(reg => {
+  navigator.serviceWorker.register('sw.js').then(reg => {
     reg.onupdatefound = () => {
       const installingWorker = reg.installing;
       installingWorker.onstatechange = () => {
         if (installingWorker.state === 'installed') {
           if (navigator.serviceWorker.controller) {
+            // Show update prompt
             alert('AfyaSafe has been updated! Please refresh for the latest version.');
           }
         }
