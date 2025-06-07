@@ -1,4 +1,4 @@
-const CACHE_NAME = "afyasafe-cache-v1";
+const CACHE_NAME = "afyasafe-cache-v2";
 const FILES_TO_CACHE = [
   "/",
   "/index.html",
@@ -7,6 +7,23 @@ const FILES_TO_CACHE = [
   "/market.html",
   "/style.css",
   "/app.js",
+  "/sw.js",
+  "/manifest.json",
+  // Add all images and icons you want available offline:
+  "/favicon.ico",
+  "/icon-192.png",
+  "/icon-512.png",
+  "/t1.png",
+  "/ad1.png",
+  "/y1.png",
+  "/ya2.png",
+  "/m1.png",
+  "/m2.PNG",
+  "/m3.PNG",
+  "/m4.PNG",
+  "/m5.PNG",
+  "/m6.PNG",
+  // ...add all other images used in your app...
   "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css",
   "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
 ];

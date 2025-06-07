@@ -151,3 +151,125 @@ footer {
   background: #fffde7;
   color: #f57f17;
 }
+
+/* Learn page content enhancements */
+#learnContainer {
+  max-width: 700px;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+#learnContainer figure {
+  margin-bottom: 2.5rem;
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px #0001;
+  padding: 1.5rem 1.2rem;
+  transition: box-shadow 0.2s;
+}
+
+#learnContainer h6,
+#learnContainer .fw-semibold {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+  color: #b71c1c;
+}
+
+#learnContainer img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 2px 8px #0001;
+  display: block;
+}
+
+#learnContainer p,
+#learnContainer .small {
+  font-size: 1.13rem;
+  line-height: 1.7;
+  color: #222;
+}
+
+@media (max-width: 600px) {
+  #learnContainer {
+    padding: 0.5rem 0.2rem 2rem 0.2rem;
+  }
+  #learnContainer figure {
+    padding: 1rem 0.5rem;
+  }
+  #learnContainer h6,
+  #learnContainer .fw-semibold {
+    font-size: 1.1rem;
+  }
+  #learnContainer p,
+  #learnContainer .small {
+    font-size: 1rem;
+  }
+}
+
+/* Ensure smooth scrolling and no content is cut off */
+html, body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Marketplace card enhancements */
+#market-ads .card {
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px #0001;
+  margin-bottom: 2rem;
+  padding: 0;
+  transition: box-shadow 0.2s;
+  font-size: 1.18rem;
+}
+
+#market-ads .card-img-top {
+  border-top-left-radius: 1.2rem;
+  border-top-right-radius: 1.2rem;
+  max-height: 260px;
+  object-fit: cover;
+}
+
+#market-ads .card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #b71c1c;
+  margin-bottom: 0.6rem;
+}
+
+#market-ads .card-text {
+  font-size: 1.13rem;
+  color: #222;
+  margin-bottom: 0.7rem;
+}
+
+#market-ads .btn-success {
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 0.7rem;
+  margin-top: 0.5rem;
+}
+
+#market-ads {
+  margin-bottom: 5.5rem; /* Add space so last card is not hidden by footer */
+}
+
+@media (max-width: 600px) {
+  #market-ads {
+    margin-bottom: 7rem; /* Extra space for mobile footer */
+  }
+}
+
+@media (max-width: 600px) {
+  #market-ads .card {
+    font-size: 1rem;
+  }
+  #market-ads .card-title {
+    font-size: 1.1rem;
+  }
+  #market-ads .card-text {
+    font-size: 1rem;
+  }
+}

@@ -6,11 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Favicon & PWA tags -->
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="AfyaSafe" />
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.png">
 </head>
 <body class="bg-light" id="page">
-  <!-- Top bar (no logo now) -->
+  <!-- Top bar -->
   <div class="appbar d-flex justify-content-between align-items-center px-3 py-2" style="background:#c62828;color:#fff;">
     <span style="font-size:1.3rem;font-weight:600;"><i class="bi bi-droplet-half"></i> AfyaSafe</span>
     <span>🇬🇭</span>
@@ -24,7 +32,7 @@
   <!-- Calendar Section -->
   <main class="container py-3" style="max-width:420px;">
     <div class="text-center mb-3">
-      <h4 class="mb-0"><span id="streak-count" style="font-weight:700;">0</span> day streak!</h4>
+      <h4 class="mb-0" id="welcome-message"><span id="streak-count" style="font-weight:700;">0</span> day streak!</h4>
       <small id="calendar-summary">Tap the first day of your period to start</small>
     </div>
 
@@ -46,19 +54,23 @@
     </button>
   </main>
 
-  <!-- Bottom Nav with WhatsApp, Logo, and Theme Dropdown -->
+  <!-- Bottom Nav with WhatsApp, Logo, Settings, and Theme Dropdown -->
   <nav class="navbar navbar-light bg-white shadow-lg fixed-bottom py-1">
     <div class="container-fluid justify-content-around">
-      <a href="index.html" class="btn btn-link active"><i class="bi bi-house fs-4" style="color:#c62828"></i></a>
+      <a href="index.html" class="btn btn-link"><i class="bi bi-house fs-4" style="color:#c62828"></i></a>
       <a href="analytics.html" class="btn btn-link"><i class="bi bi-graph-up-arrow fs-4" style="color:#b87333"></i></a>
       <a href="learn.html" class="btn btn-link"><i class="bi bi-book fs-4" style="color:#4b2e2b"></i></a>
-      <a href="market.html" class="btn btn-link"><i class="bi bi-megaphone fs-4" style="color:#4caf50"></i></a>
+      <a href="market.html" class="btn btn-link active"><i class="bi bi-megaphone fs-4" style="color:#4caf50"></i></a>
       <a href="https://wa.me/233269609634" class="btn btn-link" target="_blank">
         <i class="bi bi-whatsapp fs-4" style="color:#25D366"></i>
       </a>
       <a href="index.html" class="btn btn-link">
         <img src="logo.png" alt="Logo" style="height:28px; width:auto; border-radius:50%;">
       </a>
+      <!-- Settings icon in bottom nav -->
+      <button id="openSettings" class="btn btn-link" title="Settings" style="padding:0 8px;">
+        <i class="bi bi-gear fs-4" style="color:#232323"></i>
+      </button>
       <div class="btn-group dropup">
         <button type="button" class="btn btn-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="bi bi-palette fs-4" style="color:#c62828"></i>
@@ -78,7 +90,58 @@
     </div>
   </nav>
 
-  <script src="app.js"></script>
+  <!-- Profile Setup Modal -->
+  <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title" id="profileModalLabel"><i class="bi bi-person-lines-fill"></i> Set Up Your Profile</h5>
+        </div>
+        <div class="modal-body">
+          <p class="small text-muted">Enter your name and age correctly so we can guide you properly. This helps us offer you age-appropriate support 💡</p>
+          <form id="profileForm">
+            <div class="mb-3">
+              <label for="nickname" class="form-label">Your Nickname</label>
+              <input type="text" class="form-control" id="nickname" placeholder="e.g. Akosua" required>
+            </div>
+            <div class="mb-3">
+              <label for="age" class="form-label">Your Age</label>
+              <input type="number" class="form-control" id="age" placeholder="e.g. 16" required>
+            </div>
+            <button type="submit" class="btn btn-danger w-100"><i class="bi bi-check-circle-fill"></i> Save Profile</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Modal (place before </body>) -->
+  <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="modal-content" id="settingsForm">
+        <div class="modal-header">
+          <h5 class="modal-title" id="settingsModalLabel">Profile Settings</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="set-nickname" class="form-label">Nickname</label>
+            <input type="text" class="form-control" id="set-nickname" required>
+          </div>
+          <div class="mb-3">
+            <label for="set-age" class="form-label">Age</label>
+            <input type="number" class="form-control" id="set-age" min="8" max="70" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="app.js" type="module"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     // Theme picker logic
@@ -96,12 +159,75 @@
     const savedTheme = localStorage.getItem('preferredTheme') || 'light';
     page.className = `theme-${savedTheme}`;
 
-    // Service worker and offline banner
+    // Service worker
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js');
     }
-    window.addEventListener('offline', () => document.getElementById('offline-banner').style.display = 'block');
-    window.addEventListener('online', () => document.getElementById('offline-banner').style.display = 'none');
+
+    // Offline Banner
+    window.addEventListener('offline', () => {
+      document.getElementById('offline-banner').style.display = 'block';
+    });
+    window.addEventListener('online', () => {
+      document.getElementById('offline-banner').style.display = 'none';
+    });
+
+    // Show profile modal if user profile not set
+    const userProfileRaw = localStorage.getItem('afyaUserProfile');
+    let nickname = 'Sister';
+    if (!userProfileRaw) {
+      new bootstrap.Modal(document.getElementById('profileModal')).show();
+    } else {
+      try {
+        const userProfile = JSON.parse(userProfileRaw);
+        if (userProfile.nickname) nickname = userProfile.nickname;
+      } catch {}
+    }
+
+    // Personalize welcome message and summary
+    document.getElementById('welcome-message').innerHTML =
+      `Welcome ${nickname}! <span id="streak-count" style="font-weight:700;">0</span> day streak!`;
+    document.getElementById('calendar-summary').textContent =
+      `Tap the first day of your period to start, even from past dates. ${nickname}, tap any past day to start your period cycle.`;
+
+    // Save profile
+    document.getElementById('profileForm')?.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const nicknameInput = document.getElementById('nickname').value.trim();
+      const age = parseInt(document.getElementById('age').value.trim());
+
+      if (!nicknameInput || isNaN(age) || age < 8 || age > 70) {
+        alert("Please enter a valid age (between 8 and 70).");
+        return;
+      }
+
+      const profile = { nickname: nicknameInput, age };
+      localStorage.setItem('afyaUserProfile', JSON.stringify(profile));
+      bootstrap.Modal.getInstance(document.getElementById('profileModal')).hide();
+
+      // Update personalized messages after saving
+      document.getElementById('welcome-message').innerHTML =
+        `Welcome ${nicknameInput}! <span id="streak-count" style="font-weight:700;">0</span> day streak!`;
+      document.getElementById('calendar-summary').textContent =
+        `Tap the first day of your period to start, even from past dates. ${nicknameInput}, tap any past day to start your period cycle.`;
+    });
+
+    // Settings modal logic
+    document.getElementById('openSettings')?.addEventListener('click', () => {
+      if (window.bootstrap && bootstrap.Modal) {
+        new bootstrap.Modal(document.getElementById('settingsModal')).show();
+      }
+    });
+
+    // ...inside renderCalendarGrid()
+    if ($tip) {
+      $tip.textContent = calPeriodStart
+        ? "Tap any past day to log your period, or 'Log Today' if you menstruated today!"
+        : "Tap any past day to start your period cycle.";
+    }
   </script>
+
+  <button id="installAppBtn" style="display:none;position:fixed;bottom:80px;right:20px;z-index:2000;" class="btn btn-success shadow">Install AfyaSafe</button>
+
 </body>
 </html>

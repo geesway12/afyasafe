@@ -3,128 +3,521 @@
 <head>
   <meta charset="UTF-8">
   <title>AfyaSafe – Learn</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-light" id="page">
-  <!-- Top bar -->
-  <div class="appbar d-flex justify-content-between align-items-center px-3 py-2" style="background:#c62828;color:#fff;">
-    <span style="font-size:1.3rem;font-weight:600;"><i class="bi bi-droplet-half"></i> AfyaSafe</span>
-    <span>🇬🇭</span>
-  </div>
+<!-- ─── Top bar ─────────────────────────────────────────────────────── -->
+<div class="appbar d-flex justify-content-between align-items-center px-3 py-2" style="background:#c62828;color:#fff;">
+  <span style="font-size:1.3rem;font-weight:600"><i class="bi bi-droplet-half"></i> AfyaSafe</span>
+  <span>🇬🇭</span>
+</div>
 
-  <main class="container py-4 d-flex flex-column align-items-center">
-    <header class="w-100 mb-3 text-center" style="max-width:420px;">
-      <h4 class="mt-2"><i class="bi bi-heart-pulse" style="color:#c62828"></i> Learn About Your Body</h4>
-      <p class="small text-muted">Friendly education for teenagers, young women, adults, and families.</p>
-    </header>
+<main class="container py-4 d-flex flex-column align-items-center">
+  <header class="w-100 text-center mb-3" style="max-width:420px;">
+    <h4 class="mt-2"><i class="bi bi-heart-pulse" style="color:#c62828"></i> Learn About Your Body</h4>
+    <p class="small text-muted">Hey <span id="nickname">Sister</span> 👋🏾, here’s your personalised guide.</p>
+  </header>
 
-    <div class="w-100 mb-4" style="max-width:420px;">
-      <h5>🌸 Common Symptoms</h5>
-      <p>Many girls and women experience cramps, headaches, bloating, and mood swings during their periods. These are normal signs of your body adjusting each month.</p>
-      <img src="L6.png" alt="Common Symptoms" class="img-fluid rounded mb-3">
+  <div id="learnContainer" class="w-100" style="max-width:420px;"></div>
+</main>
 
-      <h5>🌿 Safe Hygiene During Your Period</h5>
-      <p>Wash with clean water, change pads or tampons regularly, wipe front to back, and wear cotton underwear to stay fresh and healthy.</p>
-      <img src="L7.png" alt="Safe Hygiene" class="img-fluid rounded mb-3">
-
-      <h5>💛 Teenage Pregnancy</h5>
-      <p>Sex can cause pregnancy. It’s okay to wait until you are ready. Having a baby changes your life and your goals. Seek advice and support from trusted adults.</p>
-      <img src="L8.png" alt="Teenage Pregnancy" class="img-fluid rounded mb-3">
-
-      <h5>🗓 Understanding Your Cycle</h5>
-      <p>Learn how to track your days, understand ovulation, and know when you’re fertile. This helps in planning and understanding your body better.</p>
-      <img src="L9.png" alt="Understanding Your Cycle" class="img-fluid rounded mb-3">
-
-      <h5>🩸 Know About Menstruation</h5>
-      <p>Menstruation is normal vaginal bleeding as part of the monthly cycle. Deal with pain using warmth, practice good hygiene, and remember: it’s NOT dirty.</p>
-      <img src="L10.png" alt="Know About Menstruation" class="img-fluid rounded mb-3">
-
-      <h5>🧼 Healthy Menstrual Hygiene</h5>
-      <p>Change pads, wash daily, wear breathable underwear, and talk to an adult if you feel unwell. Keeping clean prevents infections.</p>
-      <img src="L11.png" alt="Healthy Menstrual Hygiene" class="img-fluid rounded mb-3">
-
-      <h5>⚠ Beware of Teenage Pregnancy</h5>
-      <p>Pregnancy can lead to school dropouts, health risks, financial hardship, and limited opportunities. Protect your future by making informed choices.</p>
-      <img src="L12.png" alt="Beware of Teenage Pregnancy" class="img-fluid rounded mb-3">
-
-      <h5>👩‍❤️‍👨 Natural Family Planning</h5>
-      <p>Couples can track fertile days to avoid or plan pregnancy naturally. Knowing your body and cycle is key for safe family planning.</p>
-      <img src="L13.png" alt="Natural Family Planning" class="img-fluid rounded mb-3">
-
-      <h5>💬 Ask for Help</h5>
-      <p>If you ever feel confused or unsure, talk to a nurse, parent, or trusted adult. There’s no shame in asking for guidance and care.</p>
-      <img src="L14.png" alt="Ask for Help" class="img-fluid rounded mb-3">
-
-      <h5>🌍 Community Support</h5>
-      <p>Remember, you are not alone. Your community, school, and health centers are here to help you stay safe, healthy, and informed.</p>
-      <img src="L15.png" alt="Community Support" class="img-fluid rounded mb-3">
-
-      <h5>📚 More Resources</h5>
-      <ul>
-        <li><a href="https://www.cyclebeads.com" target="_blank">CycleBeads.com</a></li>
-        <li><a href="https://www.plannedparenthood.org/learn/birth-control/fertility-awareness" target="_blank">Planned Parenthood – Fertility Awareness</a></li>
-        <li><a href="https://www.who.int/news-room/fact-sheets/detail/family-planning-contraception" target="_blank">WHO – Family Planning</a></li>
+<!-- ─── Bottom Nav (gear-icon opens settings) ───────────────────────── -->
+<nav class="navbar navbar-light bg-white shadow-lg fixed-bottom py-1">
+  <div class="container-fluid justify-content-around">
+    <a href="index.html" class="btn btn-link"><i class="bi bi-house fs-4" style="color:#c62828"></i></a>
+    <a href="analytics.html" class="btn btn-link"><i class="bi bi-graph-up-arrow fs-4" style="color:#b87333"></i></a>
+    <a href="learn.html" class="btn btn-link"><i class="bi bi-book fs-4" style="color:#4b2e2b"></i></a>
+    <a href="market.html" class="btn btn-link active"><i class="bi bi-megaphone fs-4" style="color:#4caf50"></i></a>
+    <a href="https://wa.me/233269609634" class="btn btn-link" target="_blank">
+      <i class="bi bi-whatsapp fs-4" style="color:#25D366"></i>
+    </a>
+    <a href="index.html" class="btn btn-link">
+      <img src="logo.png" alt="Logo" style="height:28px; width:auto; border-radius:50%;">
+    </a>
+    <!-- Settings icon in bottom nav -->
+    <button id="openSettings" class="btn btn-link" title="Settings" style="padding:0 8px;">
+      <i class="bi bi-gear fs-4" style="color:#232323"></i>
+    </button>
+    <div class="btn-group dropup">
+      <button type="button" class="btn btn-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-palette fs-4" style="color:#c62828"></i>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item theme-option" data-theme="light" href="#">Light</a></li>
+        <li><a class="dropdown-item theme-option" data-theme="dark" href="#">Dark</a></li>
+        <li><a class="dropdown-item theme-option" data-theme="blue" href="#">Blue</a></li>
+        <li><a class="dropdown-item theme-option" data-theme="pink" href="#">Pink</a></li>
+        <li><a class="dropdown-item theme-option" data-theme="red" href="#">Red</a></li>
+        <li><a class="dropdown-item theme-option" data-theme="orange" href="#">Orange</a></li>
+        <li><a class="dropdown-item theme-option" data-theme="purple" href="#">Purple</a></li>
+        <li><a class="dropdown-item theme-option" data-theme="green" href="#">Green</a></li>
+        <li><a class="dropdown-item theme-option" data-theme="yellow" href="#">Yellow</a></li>
       </ul>
     </div>
-  </main>
+  </div>
+</nav>
 
-  <!-- Bottom Nav with WhatsApp, Logo, and Theme Dropdown -->
-  <nav class="navbar navbar-light bg-white shadow-lg fixed-bottom py-1">
-    <div class="container-fluid justify-content-around">
-      <a href="index.html" class="btn btn-link"><i class="bi bi-house fs-4" style="color:#c62828"></i></a>
-      <a href="analytics.html" class="btn btn-link"><i class="bi bi-graph-up-arrow fs-4" style="color:#b87333"></i></a>
-      <a href="learn.html" class="btn btn-link active"><i class="bi bi-book fs-4" style="color:#4b2e2b"></i></a>
-      <a href="market.html" class="btn btn-link"><i class="bi bi-megaphone fs-4" style="color:#4caf50"></i></a>
-      <a href="https://wa.me/233269609634" class="btn btn-link" target="_blank">
-        <i class="bi bi-whatsapp fs-4" style="color:#25D366"></i>
-      </a>
-      <a href="index.html" class="btn btn-link">
-        <img src="logo.png" alt="Logo" style="height:28px; width:auto; border-radius:50%;">
-      </a>
-      <div class="btn-group dropup">
-        <button type="button" class="btn btn-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="bi bi-palette fs-4" style="color:#c62828"></i>
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item theme-option" data-theme="light" href="#">Light</a></li>
-          <li><a class="dropdown-item theme-option" data-theme="dark" href="#">Dark</a></li>
-          <li><a class="dropdown-item theme-option" data-theme="blue" href="#">Blue</a></li>
-          <li><a class="dropdown-item theme-option" data-theme="pink" href="#">Pink</a></li>
-          <li><a class="dropdown-item theme-option" data-theme="red" href="#">Red</a></li>
-          <li><a class="dropdown-item theme-option" data-theme="orange" href="#">Orange</a></li>
-          <li><a class="dropdown-item theme-option" data-theme="purple" href="#">Purple</a></li>
-          <li><a class="dropdown-item theme-option" data-theme="green" href="#">Green</a></li>
-          <li><a class="dropdown-item theme-option" data-theme="yellow" href="#">Yellow</a></li>
-        </ul>
+<!-- Settings Modal (place before </body>) -->
+<div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form class="modal-content" id="settingsForm">
+      <div class="modal-header">
+        <h5 class="modal-title" id="settingsModalLabel">Profile Settings</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-    </div>
-  </nav>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="set-nickname" class="form-label">Nickname</label>
+          <input type="text" class="form-control" id="set-nickname" required>
+        </div>
+        <div class="mb-3">
+          <label for="set-age" class="form-label">Age</label>
+          <input type="number" class="form-control" id="set-age" min="8" max="70" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
 
-  <script src="app.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // Theme picker logic
-    const page = document.getElementById('page');
-    document.querySelectorAll('.theme-option').forEach(option => {
-      option.addEventListener('click', (e) => {
-        e.preventDefault();
-        const theme = option.getAttribute('data-theme');
-        page.className = `theme-${theme}`;
-        localStorage.setItem('preferredTheme', theme);
-      });
+<script>
+  // Theme picker logic
+  const page = document.getElementById('page');
+  document.querySelectorAll('.theme-option').forEach(option => {
+    option.addEventListener('click', (e) => {
+      e.preventDefault();
+      const theme = option.getAttribute('data-theme');
+      page.className = `theme-${theme}`;
+      localStorage.setItem('preferredTheme', theme);
     });
+  });
 
-    // Load saved theme on page load
-    const savedTheme = localStorage.getItem('preferredTheme') || 'light';
-    page.className = `theme-${savedTheme}`;
+  // Load saved theme on page load
+  const savedTheme = localStorage.getItem('preferredTheme') || 'light';
+  page.className = `theme-${savedTheme}`;
 
-    // Service worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js');
+  // Service worker
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+
+  // Settings modal logic
+  document.getElementById('openSettings')?.addEventListener('click', () => {
+    if (window.bootstrap && bootstrap.Modal) {
+      new bootstrap.Modal(document.getElementById('settingsModal')).show();
     }
-  </script>
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- ─── Scripts ──────────────────────────────────────────────────────── -->
+<script type="module">
+import { getAfyaUser, getUserLearnBlock } from './app.js';
+
+/* theme */
+document.getElementById('page').className = `theme-${localStorage.getItem('preferredTheme')||'light'}`;
+
+/* settings modal prefills & save */
+const profile = getAfyaUser();
+document.getElementById('nickname').textContent = profile.nickname;
+document.getElementById('set-nickname').value = profile.nickname;
+document.getElementById('set-age').value       = profile.age;
+document.getElementById('settingsForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const n  = document.getElementById('set-nickname').value.trim();
+  const a  = parseInt(document.getElementById('set-age').value.trim());
+  if(!n||isNaN(a)||a<8||a>70){alert('Enter valid age 8-70');return;}
+  localStorage.setItem('afyaUserProfile',JSON.stringify({nickname:n,age:a}));
+  bootstrap.Modal.getInstance(document.getElementById('settingsModal')).hide();
+  location.reload();
+});
+
+  /*****************************************************************
+ *  FULL IMAGE-AND-TEXT DATABASE  —  USE EXACTLY AS GIVEN BELOW  *
+ *****************************************************************/
+const blocks = {
+  teen: [
+    {
+      title: 'Overview',
+      img: 't1.png',
+      text:
+`🧒 Hey Girl! Let’s Chat About Your Period
+
+🎯 Helping you understand periods, feel confident, and take great care of yourself.`
+    },
+    {
+      title: '🩸 1. What’s a Period Anyway? 🌸',
+      img: 't2.png',
+      text:
+`Hello my dear! So, let’s talk about something every girl goes through — your period. A period is when blood comes out of your body through the vagina. Don’t be afraid — it’s not because you are hurt. It happens because your body is changing and growing into a woman.
+
+This usually starts between the ages of 9 and 13. Some girls may start earlier, some later — and that’s all okay. When your period comes, it may last for about 3 to 7 days. You’ll see blood on your panties, and it may feel strange at first — but it’s a good sign that your body is healthy.`
+    },
+    {
+      title: '🧠 2. But Why Does It Happen? 🤔',
+      img: 't3.png',
+      text:
+`Think of it like this: each month, your body is preparing a soft place inside (the womb or uterus) in case a baby will grow there one day. If there is no baby, your body cleans out that soft lining, and that comes out as blood. That’s your period.
+
+It’s like when you prepare a guest room — if no one comes, you clean it up and start fresh next month!`
+    },
+    {
+      title: '📅 3. Your Cycle (AKA Your Body’s Calendar!) 📌',
+      img: 't4.png',
+      text:
+`Your period is part of a cycle. That means it happens over and over again, usually every 28 days. But every girl is different. Some get their period every 21 days, others every 35 days — it’s all normal.
+
+You can keep a calendar or use a small notebook to write down:
+\t•\tThe day your period starts 🗓️
+\t•\tHow many days it lasts
+\t•\tIf you felt pain (cramps), sadness, tiredness
+\t•\tHow heavy the bleeding was
+
+This is your personal health book! Some girls even use stickers or beads to mark their days. It’s simple, and it helps you understand your body better.`
+    },
+    {
+      title: '🤕 4. Common Period Feelings and Symptoms 💬',
+      img: 't5.png',
+      text:
+`Your body may feel different before or during your period. That’s okay, too. You might have:
+\t•\tCramps (pain in your lower stomach)
+\t•\tMood swings (feeling happy, then sad 😢, then angry 😠)
+\t•\tTiredness, or a bloated stomach
+\t•\tHeadaches or back pain
+
+🌿 What helps? You can use a warm cloth or bottle on your stomach. Drink warm tea like ginger or sobolo. Rest when needed and try gentle walks.
+
+And don’t feel shy to talk to another woman. Older sisters, aunties, and mothers have all been through it!`
+    },
+    {
+      title: '🧼 5. Staying Fresh and Clean 🚿',
+       img: 't6.png',
+      text:
+`During your period, staying clean is important:
+\t•\tChange your pad every 4–6 hours if you can 🩹
+\t•\tIf you use cloth, wash it well with soap and dry it in the sun ☀️
+\t•\tWash yourself with clean water. Don’t put soap inside — just outside
+\t•\tAlways wipe from front to back to avoid infections
+\t•\tWear clean cotton underwear 👙
+
+If water is hard to find, carry a small bottle with you. Your health matters!`
+    },
+    {
+      title: '👩‍⚕️ 6. Need to Talk? It’s Totally Okay! 🗣️',
+      img: 't7.png',
+      text:
+`Some girls feel shy or confused when their period starts — that’s normal too. But don’t keep quiet.
+Talk to someone you trust:
+\t•\tYour mother or auntie 👩🏾‍🦱
+\t•\tA teacher or school health nurse 👩🏽‍⚕️
+\t•\tA big sister or older cousin 🧍🏾‍♀️
+
+You’re never alone. Every woman you know has had a period. Asking questions shows that you’re brave and wise.`
+    },
+    {
+      title: '🌼 7. Proud to Grow Up! 🎉',
+      img: 't8.png',
+      text:
+`Getting your period means you’re growing into a strong woman. There’s nothing dirty or shameful about it. In our culture, this is a sign that a girl is becoming responsible.
+
+Celebrate yourself. Keep clean. Stay healthy. And always remember — you are special and your body is doing something amazing. 💖`
+    }
+  ],
+
+  adolescent: [
+    {
+      title: 'Overview',
+      img: 'ad1.png',
+      text:
+`🧭 Let’s get deeper now. You’ve started your period — now it’s time to understand your cycle, your moods, and how to manage your body like a queen. 👑`
+    },
+    {
+      title: '📅 1. Track Your Period Naturally',
+      img: 'ad2.png',
+      text:
+`Your body is talking to you every month — through your period. And if you listen and write things down, you can understand it clearly.
+
+Here’s what tracking can help you with:
+\t•\tKnowing when your next period is coming 🩸
+\t•\tPlanning ahead for school, sports, or church events
+\t•\tUnderstanding why you feel moody or tired some days
+
+Use a small diary 📖 or calendar. Mark the first day of your period, how long it lasted, and how you felt.
+For example:
+\t•\t“Started bleeding July 5th”
+\t•\t“Had cramps, felt tired on Day 1”
+\t•\t“Bleeding stopped on July 9th”
+
+It’s like your private health journal. No one has to see it unless you want them to.`
+    },
+    {
+      
+      title: '🔄 2. The 4 Phases of the Menstrual Cycle',
+      img: 'ad3.png',
+      text:
+`Yes girl — your body moves in stages. Understanding them helps you feel in tune with yourself.
+
+🩸 Menstruation (Day 1–5) – This is when your period happens. You may feel tired or in pain. Rest, drink warm things, and be gentle with yourself.
+
+🌱 Follicular Phase (Day 1–14) – Your body is rebuilding strength. You may feel energetic, focused, and creative. This is a good time to learn, do chores, or take on projects.
+
+🥚 Ovulation (Around Day 14) – Your body releases an egg. You might notice wetness in your underwear (like egg white). You may also feel confident, attractive, or excited.
+
+🌙 Luteal Phase (Day 15–28) – Your energy may drop. You might feel moody, bloated, or sleepy. This is your body preparing for your next period.
+
+This is a natural rhythm — like the moon. 🌕 Learning it helps you make better choices.`
+    },
+    {
+      title: '👁️ 3. What’s Normal? What’s Not?',
+       img: 'ad4.png',
+      text:
+`Most girls bleed for 3–7 days. Most cycles are 21–35 days long. Some changes are okay. But:
+
+🚨 Tell someone if:
+\t•\tYour period doesn’t come for 3 months or more (and you’re not pregnant)
+\t•\tYou bleed too much (soaking pads every hour)
+\t•\tYou can’t go to school or work because of cramps
+
+Don’t keep pain or worry to yourself. Help is available, and you deserve peace of mind.`
+    },
+    { 
+      title: '🤕 4. Managing Symptoms Like a Boss 💅🏾',
+      img: 'ad5.png',
+      text:
+`Cramps? Put a warm bottle on your belly or take a walk. You can also rub your back with shea butter 🌿.
+
+Feeling sad or angry? That’s okay. Write in a diary 📓, sing, pray, or talk to someone.
+
+Bloated? Drink plenty of water, avoid salty foods like too much gari or salted fish.
+
+Tired? Sleep earlier if you can. Eat good food — things like beans, kontomire, and groundnut soup.
+
+You are not lazy or weak. You are learning how to work with your body like a smart young woman.`
+    },
+    {
+      title: '🔐 5. Privacy, Respect & Asking for Help',
+       img: 'ad6.png',
+      text:
+`You don’t have to tell anyone about your period unless you want to. But don’t be ashamed of it.
+
+Carry your pads with pride. Keep a small bag for emergencies. If something feels wrong or confusing, talk to someone you trust.
+
+Asking questions doesn’t make you weak — it makes you wise. ✨
+
+
+🌟 You’re Learning to Know Your Body
+
+Understanding your cycle is a superpower. It helps you love your body more, feel confident, and know what’s normal.
+
+You are growing, learning, and glowing. Stay proud, stay curious, and always treat yourself with kindness. 💖👑`
+    }
+  ],
+
+  youngadult: [
+    {
+      title: 'Overview',
+      img: 'y1.png',
+      text:
+`🎯 Goal: Deepen body awareness and build confidence through natural menstrual tracking and wellness.`
+    },
+    {
+      title: '🩸 1. The Full Menstrual Cycle: A Natural Rhythm',
+      img: 'ya2.png',
+      text:
+`The menstrual cycle isn’t just about your period. It’s a repeating, hormone-driven pattern with four distinct phases:
+1. Menstrual Phase (Days 1–5)
+* The uterine lining sheds — this is your period.
+* Estrogen and progesterone are at their lowest.
+* You may feel fatigued, introverted, or low-energy.
+2. Follicular Phase (Days 1–14, overlaps with menstruation)
+* Hormones begin to rise, prepping your body to release an egg.
+* You may notice clearer skin, boosted mood, and rising energy.
+3. Ovulation (Around Day 14)
+* One mature egg is released.
+* Some women feel more confident or social, and may notice slippery, egg-white discharge.
+4. Luteal Phase (Days 15–28)
+* Hormones peak and then drop if no pregnancy occurs.
+* This is when PMS symptoms (bloating, irritability, cravings) may show up.
+👉 Knowing your cycle helps you work with your body, not against it.`
+    },
+    {
+      title: '👀 2. Tracking Subtle Changes in Your Body',
+      img: 'ya3.png',
+      text:
+`You can learn a lot about your health by observing daily signals:
+* Discharge: Texture and color change throughout the cycle.
+    * Dry/sticky = not fertile
+    * Clear/slippery = ovulation approaching
+* Mood: Mood shifts are common—track your highs and lows.
+* Body temperature: Basal temperature slightly rises after ovulation.
+* Breast sensitivity, cravings, and sleep patterns also shift.
+📝 Keep a cycle journal or use an app to track your symptoms, energy, and flow.`
+    },
+    {
+      title: '🛑 3. When Is Something Not Normal?',
+      img: 'ya4.png',
+      text:
+`Irregularities can happen, but repeated patterns may signal a health issue.
+🔎 Talk to a healthcare provider if you notice:
+* Periods coming less than 21 days apart or skipping for more than 2–3 months
+* Extremely heavy bleeding or clots
+* Pain that disrupts your daily life
+* Sudden changes in mood, skin, or weight
+Even without birth control, natural tracking gives you a picture of your hormone health.`
+    },
+    {
+      title: '🥦 4. Lifestyle Tips for a Balanced Cycle',
+      img: 'ya5.png',
+      text:
+`Your lifestyle can support or stress your cycle. Focus on:
+Nutrition
+* Iron-rich foods (spinach, beans, red meat)
+* Hydration and whole grains
+* Omega-3s for mood and cramps
+Exercise
+* Light movement during menstruation (yoga, walking)
+* Cardio and strength training mid-cycle (ovulation)
+* Gentle recovery in the luteal phase
+Sleep
+* Aim for 7–9 hours
+* Track if you sleep better in some phases than others
+Treat your body like it’s communicating — because it is.`
+    },
+    { 
+      title: '🧘‍♀️ 5. Tuning In to Your Body’s Signals',
+      img: 'ya6.png',
+      text:
+`This is your time to become more connected with your body. Notice:
+* What gives you energy and what drains you
+* When you feel social vs. when you need quiet
+* How your emotions rise and fall with your hormones
+Being in sync with your menstrual cycle can:
+* Improve productivity
+* Enhance emotional clarity
+* Help you make better wellness decisions
+💡 You don’t need to "fix" your body — just listen to it.`
+    }
+  ],
+
+  mother: [
+    {
+      title: 'Overview',
+      img: 'm1.png',
+      text:
+`👩🏾‍🦱 Sister, Let’s Talk Clearly About Our Periods
+
+🎯 Helping you deeply understand your body and how your period changes as life goes on.`
+    },
+    {
+      title: '🧬 1. How Having a Baby and Getting Older Changes Your Period 👶🏽',
+      img: 'm2.PNG',
+      text:
+`Sister, after childbirth, your body changes in many ways, and your period is no exception:
+\t•\t🕒 Period might return in 6 weeks or even several months after having a baby, especially if breastfeeding 🤱🏾.
+\t•\t🩸 Sometimes heavier or lighter than before.
+\t•\t📅 Might be irregular for a while but usually becomes regular again.
+
+As you get older (around 40 years), your body changes again:
+\t•\t📆 Periods can be longer, shorter, or even skip months.
+\t•\t🌡️ Mood swings, tiredness, hot flashes, or irritability may appear.
+
+Your body is adjusting—it’s completely normal!`
+    },
+    {
+      title: '⚖️ 2. Hormones: How to Tell When They Are Balanced or Not 🌸',
+      img: 'm3.PNG',
+      text:
+`Hormones help our body feel good and healthy. When balanced, we feel strong and happy 😊. When they’re not balanced, you might notice:
+\t•\t❌ Missed or irregular periods.
+\t•\t😴 Feeling very tired or stressed.
+\t•\t🤔 Sudden weight changes you can’t explain.
+\t•\t🧼 Skin problems or hair loss.
+
+Keeping a notebook 📓 to track these signs helps you understand your body and explain clearly when you talk to a nurse or doctor 👩🏾‍⚕️.`
+    },
+    {
+      title: '🩸 3. How to Manage Heavy or Irregular Bleeding 💧',
+      img: 'm4.PNG',
+      text:
+`Changes in your period can happen after having a baby or when getting older. But you should know what’s normal and what’s not:
+
+✅ Normal signs:
+\t•\tSlightly heavier bleeding after childbirth.
+\t•\tSpotting between cycles occasionally, especially during breastfeeding or approaching menopause.
+
+🚩 Important signs (see a nurse quickly if you have):
+\t•\t😟 Bleeding so much that pads get soaked within an hour.
+\t•\t🗓️ Periods that last over a week regularly.
+\t•\t🤕 Very strong pain, dizziness, or weakness during your period.
+
+Don’t wait! Early help keeps you safe and healthy 🏥.`
+    },
+    {
+      title: '📆 4. Why Should I Track My Period? ✍🏾',
+      img: 'm5.PNG',
+      text:
+`Tracking your period isn’t just for younger women; it’s for every woman!
+\t•\t🔎 Helps you notice any unusual changes quickly.
+\t•\t🚿 Lets you prepare better for heavy or painful days.
+\t•\t🗣️ Makes it easier to explain clearly to the health workers when needed.
+
+Use any simple tool:
+\t•\t🗓️ Marking dates on a calendar.
+\t•\t📔 Writing details in a notebook.
+\t•\t📱 Using phone apps (if available).
+
+Understanding your body helps you take control 💪🏾.`
+    },
+    {
+      title: '🩺 5. When Should I Talk to a Nurse or Doctor? 🚑',
+      img: 'm6.PNG',
+      text:
+`Listening to your body protects your health. Go to the clinic if you notice:
+\t•\t🚫 Missing periods for 3 months or longer (and not pregnant).
+\t•\t⚠️ Heavy, painful, or too long-lasting periods.
+\t•\t😵 Frequent tiredness, dizziness, or fainting during periods.
+\t•\t🔥 Strong mood swings, hot flashes, or unusual symptoms in your late 30s or 40s.
+
+Don’t delay! Taking quick action helps your body heal faster 🩺.
+
+
+💛 Final Thoughts for You, My Sister: 💬
+
+Your period is your body speaking clearly to you:
+\t•\t🌙 It tells you when you need rest.
+\t•\t🌻 It tells you when you’re healthy or something needs attention.
+
+Never ignore your body’s voice. Listen, track, and talk openly. Knowledge keeps us strong and healthy together 🌟🤗💖.`
+    }
+  ]
+};
+
+/* choose block by age */
+const blockKey = getUserLearnBlock(profile.age).key;
+
+/* NEW — images now live next to learn.html */
+const base = '';   // or "./"
+const wrap = document.getElementById('learnContainer');
+
+blocks[blockKey].forEach(({ img, title, text }) => {
+  const fig = document.createElement('figure');
+  fig.className = 'mb-4';
+  fig.innerHTML = `
+    <figcaption>
+      <h6 class="fw-semibold">${title}</h6>
+    </figcaption>
+    <img src="${base}${img}" class="img-fluid rounded mb-2 d-block mx-auto" alt="${title}">
+    <figcaption>
+      <p class="small white-space-pre">${text.replace(/\n/g,'<br>')}</p>
+    </figcaption>
+  `;
+  wrap.appendChild(fig);
+});
+</script>
+<style>.white-space-pre{white-space:pre-wrap;}</style>
 </body>
 </html>
