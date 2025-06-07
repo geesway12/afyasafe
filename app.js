@@ -275,12 +275,8 @@ let deferredPrompt;
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  // Show your custom install button
-  const installBtn = document.getElementById('installAppBtn');
-  if (installBtn) installBtn.style.display = 'block';
+  document.getElementById('installAppBtn').style.display = 'block';
 });
-
-// Handle install button click
 document.getElementById('installAppBtn')?.addEventListener('click', async () => {
   if (deferredPrompt) {
     deferredPrompt.prompt();
@@ -298,7 +294,6 @@ if ('serviceWorker' in navigator) {
       installingWorker.onstatechange = () => {
         if (installingWorker.state === 'installed') {
           if (navigator.serviceWorker.controller) {
-            // Show update prompt
             alert('AfyaSafe has been updated! Please refresh for the latest version.');
           }
         }
