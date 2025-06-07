@@ -113,6 +113,25 @@
         }
 
         activeAds.forEach(ad => {
+          // Detect link type and set icon/text
+          let btnIcon = '';
+          let btnText = '';
+          let btnLink = ad.link || ad.whatsapp || ad.url || ad.email || '#';
+
+          if (btnLink.startsWith('https://chat.whatsapp.com') || btnLink.startsWith('https://wa.me')) {
+            btnIcon = '<i class="bi bi-whatsapp"></i>';
+            btnText = 'Join WhatsApp Group';
+          } else if (btnLink.startsWith('mailto:')) {
+            btnIcon = '<i class="bi bi-envelope"></i>';
+            btnText = 'Send Email';
+          } else if (btnLink.startsWith('http://') || btnLink.startsWith('https://')) {
+            btnIcon = '<i class="bi bi-globe"></i>';
+            btnText = 'Visit Website';
+          } else {
+            btnIcon = '<i class="bi bi-link-45deg"></i>';
+            btnText = 'Open Link';
+          }
+
           const card = document.createElement('div');
           card.className = 'card mb-3 shadow-sm';
           card.innerHTML = `
@@ -121,8 +140,8 @@
               <h5 class="card-title">${ad.title}</h5>
               <p class="card-text">${ad.description}</p>
               <p class="card-text">${ad.cta}</p>
-              <a href="${ad.whatsapp}" target="_blank" class="btn btn-success w-100">
-                <i class="bi bi-whatsapp"></i> Join WhatsApp Group
+              <a href="${btnLink}" target="_blank" class="btn btn-success w-100">
+                ${btnIcon} ${btnText}
               </a>
             </div>
           `;
