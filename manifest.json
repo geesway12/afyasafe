@@ -1,6 +1,6 @@
 {
-  "name": "AfyaSafe",
-  "short_name": "AfyaSafe",
+  "name": "Akosua cycle Tracker",
+  "short_name": "Akosua",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
